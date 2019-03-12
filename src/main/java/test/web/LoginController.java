@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import test.entity.User;
 import test.service.UserService;
@@ -18,9 +19,9 @@ public class LoginController {
     UserService userService;
 
     @Autowired
-    public void setUserService(UserService userService){
+    public void setUserService(UserService userService) {
 
-        this.userService=userService;
+        this.userService = userService;
     }
 
     @RequestMapping(value = "/login")
@@ -33,14 +34,17 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/submitLogin", method = RequestMethod.POST)
-    public String submitLogin(@RequestParam("userName") String userName, @RequestParam("password") String password) {
+    @ResponseBody
+    User submitLogin(@RequestParam("userName") String userName, @RequestParam("password") String password) {
 
-        System.out.println("userName"+userName);
-        System.out.println("password"+password);
+        System.out.println("userName" + userName);
+        System.out.println("password" + password);
 
-
-
-        return "TEST";
+        User user = new User();
+        user.setUserName("zhangxiang");
+        user.setAge("12");
+        user.setPassword("zhangxiang");
+        return user;
     }
 
 }
