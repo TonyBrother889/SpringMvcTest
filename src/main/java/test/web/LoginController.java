@@ -44,6 +44,9 @@ public class LoginController {
         user.setUserName("zhangxiang");
         user.setAge("12");
         user.setPassword("zhangxiang");
+
+        System.out.println(user.toString());
+
         return user;
     }
 
