@@ -46,6 +46,25 @@
         <property name="password" value="${jdbc.password}"/>
     </bean>
 
+    <!--配置sqlSessionFactory 并将数据源注入-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--注入数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--指定要使用到到mybatis配置文件-->
+        <property name="configLocation" value="classpath:config/config.xml"/>
+        <!--用于配置mapper映射xml-->
+        <property name="mapperLocations" value="classpath*:com/mjl/mapper/*.xml"/>
+    </bean>
+    <!-- 创建数据映射器-->
+    <bean  class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.mjl.dao"/>
+
+    </bean>
+  <!--  &lt;!&ndash; 对数据源进行事务管理 &ndash;&gt;
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>-->
+
     <!-- jdbcTemplate 一种比原版 jdbc 稍微方便一点的数据库操作类 -->
     <bean id="jdbcTemplate" name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"/>

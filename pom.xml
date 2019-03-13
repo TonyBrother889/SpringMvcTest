@@ -120,6 +120,20 @@
             <version>${jackson.version}</version>
         </dependency>
 
+        <!-- mybatis 包 -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.2.8</version>
+        </dependency>
+
+        <!--mybatis spring 插件 -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+
     </dependencies>
 
 </project>
